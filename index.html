@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viva Barista Cafe | Specialty Coffee & Roastery in Winston-Salem</title>
+  <meta name="description" content="Specialty coffee shop and artisan roastery in downtown Winston-Salem, NC. Founded by Ricky Hidalgo, celebrating Latin American coffee culture, precision roasting, and warm hospitality.">
+  <meta name="keywords" content="Viva Barista Cafe, specialty coffee Winston-Salem, coffee roastery NC, Ricky Hidalgo coffee, downtown Winston-Salem cafe, El Salvador single origin">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Viva Barista Cafe | Specialty Coffee & Roastery">
+  <meta property="og:description" content="Artisan single-origin coffees, precision roasting, and Latin American coffee heritage in downtown Winston-Salem.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vivabaristacafe.myshopify.com/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200">
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Viva Barista Cafe",
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1200",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "229 W 5th St",
+      "addressLocality": "Winston-Salem",
+      "addressRegion": "NC",
+      "postalCode": "27101",
+      "addressCountry": "US"
+    },
+    "telephone": "336-655-5908",
+    "priceRange": "$1–10",
+    "url": "https://vivabaristacafe.myshopify.com/",
+    "sameAs": [
+      "https://www.instagram.com/vivabaristacafe/",
+      "https://www.google.com/maps/place/Viva+Barista+Cafe/@36.0999454,-80.2493985,17z/"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------------------- */
+    /* 1. CSS VARIABLES & SYSTEM ARCHITECTURE                                   */
+    /* -------------------------------------------------------------------------- */
+    :root {
+      --clr-espresso: #1B120C;
+      --clr-espresso-light: #2A1D15;
+      --clr-cream: #FAF6F0;
+      --clr-cream-card: #F3ECE2;
+      --clr-terracotta: #C86D51;
+      --clr-terracotta-hover: #B05B41;
+      --clr-gold: #D4AF37;
+      --clr-warm-gray: #6E665E;
+      --clr-border: rgba(27, 18, 12, 0.12);
+      --clr-border-dark: rgba(250, 246, 240, 0.15);
+      
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      
+      --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --container-max: 1280px;
+      --nav-height: 80px;
+    }
+
+    /* Reset & Base Styling */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--clr-cream);
+      color: var(--clr-espresso);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Typography Scale */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .editorial-headline {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-style: italic;
+    }
+
+    .section-headline {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    .sub-headline {
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+    }
+
+    p {
+      color: var(--clr-warm-gray);
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+
+    .eyebrow {
+      font-family: var(--font-sans);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--clr-terracotta);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* Layout Utility */
+    .container {
+      width: 90%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+
+    .section-padding {
+      padding: 6rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 4rem 0;
+      }
+    }
+
+    /* Buttons & Interactive Elements */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background-color: var(--clr-terracotta);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--clr-terracotta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200, 109, 81, 0.3);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--clr-espresso);
+      color: var(--clr-espresso);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      border: 1px solid var(--clr-cream-card);
+      color: var(--clr-cream);
+    }
+
+    .btn-dark:hover {
+      background-color: var(--clr-cream);
+      color: var(--clr-espresso);
+      transform: translateY(-2px);
+    }
+
+    .btn-arrow {
+      transition: transform var(--transition-fast);
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Dark Section Theme */
+    .theme-dark {
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+    }
+
+    .theme-dark p {
+      color: rgba(250, 246, 240, 0.75);
+    }
+
+    .theme-dark .eyebrow {
+      color: var(--clr-gold);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--clr-cream);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    .scroll-indicator span {
+      width: 1px;
+      height: 30px;
+      background: linear-gradient(to bottom, var(--clr-cream), transparent);
+      animation: pulseScroll 2s infinite;
+    }
+
+    @keyframes pulseScroll {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      50.1% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 2. NAVIGATION BAR                                                         */
+    /* -------------------------------------------------------------------------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar.scrolled {
+      background-color: rgba(27, 18, 12, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--clr-border-dark);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--clr-cream);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      font-size: 0.7rem;
+      background: var(--clr-terracotta);
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 2px;
+      font-family: var(--font-sans);
+      letter-spacing: 0.1em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--clr-cream);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--clr-terracotta);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Mobile Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background-color: var(--clr-cream);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 992px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 380px;
+        height: 100vh;
+        background-color: var(--clr-espresso);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 3rem;
+        gap: 1.75rem;
+        transition: right 0.4s ease;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.25rem;
+      }
+
+      .nav-cta-group {
+        display: none;
+      }
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 3. HERO SECTION                                                            */
+    /* -------------------------------------------------------------------------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+
+    .hero:hover .hero-bg {
+      transform: scale(1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(27,18,12,0.6) 0%, rgba(27,18,12,0.85) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 850px;
+      padding-top: var(--nav-height);
+    }
+
+    .hero-headline {
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      color: rgba(250, 246, 240, 0.85);
+      margin-bottom: 2rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      color: var(--clr-gold);
+      background: rgba(212, 175, 55, 0.1);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .hero-footer {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 4. EDITORIAL BRAND STATEMENT                                              */
+    /* -------------------------------------------------------------------------- */
+    .editorial-intro {
+      background-color: var(--clr-cream);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 868px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .intro-text-wrapper {
+      padding-right: 1rem;
+    }
+
+    .intro-headline {
+      margin-bottom: 1.5rem;
+      color: var(--clr-espresso);
+    }
+
+    .intro-body {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .intro-image-container {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .intro-image-container img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      transition: transform var(--transition-smooth);
+    }
+
+    .intro-image-container:hover img {
+      transform: scale(1.03);
+    }
+
+    .intro-image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: var(--clr-cream);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 5. FEATURED COFFEE SECTION                                                 */
+    /* -------------------------------------------------------------------------- */
+    .coffee-showcase {
+      background-color: var(--clr-cream-card);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .coffee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .coffee-card {
+      background: var(--clr-cream);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--clr-border);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .coffee-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(27, 18, 12, 0.08);
+    }
+
+    .coffee-card-img {
+      height: 260px;
+      width: 100%;
+      object-fit: cover;
+      background-color: #e2d8cd;
+    }
+
+    .coffee-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .coffee-origin {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-terracotta);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .coffee-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .coffee-notes {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--clr-warm-gray);
+      margin-bottom: 1rem;
+    }
+
+    .coffee-process {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--clr-espresso);
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 12px;
+    }
+
+    .coffee-process span {
+      background: rgba(27, 18, 12, 0.05);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .coffee-card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    .coffee-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 6. COFFEE EXPERIENCE TIMELINE                                             */
+    /* -------------------------------------------------------------------------- */
+    .experience-section {
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+      position: relative;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    @media (max-width: 992px) {
+      .timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .timeline-step {
+      background: var(--clr-espresso-light);
+      padding: 2rem 1.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--clr-border-dark);
+      position: relative;
+      transition: transform var(--transition-fast);
+    }
+
+    .timeline-step:hover {
+      transform: translateY(-4px);
+      border-color: var(--clr-gold);
+    }
+
+    .timeline-number {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--clr-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-step h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-step p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 7. MENU SECTION                                                            */
+    /* -------------------------------------------------------------------------- */
+    .menu-section {
+      background-color: var(--clr-cream);
+    }
+
+    .menu-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .menu-tab-btn {
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--clr-border);
+      color: var(--clr-espresso);
+      transition: var(--transition-fast);
+    }
+
+    .menu-tab-btn.active, .menu-tab-btn:hover {
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+      border-color: var(--clr-espresso);
+    }
+
+    .menu-category-content {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .menu-category-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-bottom: 1px dashed var(--clr-border);
+    }
+
+    .menu-item-info {
+      padding-right: 2rem;
+    }
+
+    .menu-item-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--clr-espresso);
+      font-family: var(--font-serif);
+    }
+
+    .menu-item-desc {
+      font-size: 0.875rem;
+      color: var(--clr-warm-gray);
+      margin-top: 0.2rem;
+    }
+
+    .menu-item-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--clr-terracotta);
+      white-space: nowrap;
+    }
+
+    .menu-disclaimer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--clr-warm-gray);
+      margin-top: 2.5rem;
+      font-style: italic;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 8. VIVA STORY & RICKY HIDALGO                                              */
+    /* -------------------------------------------------------------------------- */
+    .story-section {
+      background-color: var(--clr-cream-card);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 868px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .story-image-wrap {
+      position: relative;
+    }
+
+    .story-image-wrap img {
+      border-radius: 6px;
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .story-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--clr-espresso);
+      color: var(--clr-cream);
+      padding: 1.5rem;
+      border-radius: 6px;
+      max-width: 200px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .story-badge p {
+      color: var(--clr-gold);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+
+    .story-timeline-mini {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    .mini-node {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .mini-node-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--clr-espresso);
+    }
+
+    .mini-node-desc {
+      font-size: 0.75rem;
+      color: var(--clr-warm-gray);
+    }
+
+    .mini-arrow {
+      color: var(--clr-terracotta);
+      font-size: 0.9rem;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 9. ROASTERY & CRAFT SECTION                                                */
+    /* -------------------------------------------------------------------------- */
+    .roastery-section {
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .roastery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .roastery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roastery-media {
+      position: relative;
+      height: 400px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .roastery-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 10. GALLERY & LIGHTBOX                                                    */
+    /* -------------------------------------------------------------------------- */
+    .gallery-section {
+      background-color: var(--clr-cream);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 280px;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-smooth);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(27, 18, 12, 0.4);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-cream);
+      transition: opacity var(--transition-fast);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 2rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 11. SOCIAL MEDIA / INSTAGRAM                                               */
+    /* -------------------------------------------------------------------------- */
+    .social-section {
+      background-color: var(--clr-cream-card);
+      text-align: center;
+    }
+
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .insta-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 6px;
+      overflow: hidden;
+      display: block;
+    }
+
+    .insta-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-smooth);
+    }
+
+    .insta-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 12. VISIT US & MAP INTEGRATION                                             */
+    /* -------------------------------------------------------------------------- */
+    .visit-section {
+      background-color: var(--clr-cream);
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--clr-cream-card);
+      border: 1px solid var(--clr-border);
+    }
+
+    @media (max-width: 868px) {
+      .visit-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .visit-info {
+      padding: 3rem;
+    }
+
+    .info-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .info-group h4 {
+      font-family: var(--font-sans);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--clr-terracotta);
+      margin-bottom: 0.4rem;
+    }
+
+    .map-container {
+      width: 100%;
+      min-height: 400px;
+      height: 100%;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 13. REVIEWS & TESTIMONIALS                                                */
+    /* -------------------------------------------------------------------------- */
+    .reviews-section {
+      background-color: var(--clr-espresso);
+      color: var(--clr-cream);
+      overflow: hidden;
+    }
+
+    .reviews-slider {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1.5rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .reviews-slider::-webkit-scrollbar {
+      height: 4px;
+    }
+    .reviews-slider::-webkit-scrollbar-thumb {
+      background: var(--clr-gold);
+      border-radius: 2px;
+    }
+
+    .review-card {
+      flex: 0 0 350px;
+      scroll-snap-align: start;
+      background: var(--clr-espresso-light);
+      padding: 2rem;
+      border-radius: 6px;
+      border: 1px solid var(--clr-border-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 576px) {
+      .review-card {
+        flex: 0 0 280px;
+      }
+    }
+
+    .review-stars {
+      color: var(--clr-gold);
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: rgba(250,246,240,0.9);
+    }
+
+    .review-author {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--clr-gold);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 14. FINAL CTA                                                              */
+    /* -------------------------------------------------------------------------- */
+    .final-cta {
+      background-color: var(--clr-espresso-light);
+      color: var(--clr-cream);
+      text-align: center;
+      border-top: 1px solid var(--clr-border-dark);
+    }
+
+    .final-cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 15. FOOTER                                                                 */
+    /* -------------------------------------------------------------------------- */
+    .site-footer {
+      background-color: #120B07;
+      color: rgba(250, 246, 240, 0.7);
+      padding: 4rem 0 2rem 0;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand h3 {
+      color: var(--clr-cream);
+      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
+    }
+
+    .footer-col h4 {
+      color: var(--clr-cream);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--clr-cream);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- NAVIGATION BAR                                                           -->
+  <!-- ------------------------------------------------------------------------ -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        Viva Barista <span>Cafe</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#coffee">Roastery</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+
+      <div class="nav-cta-group">
+        <a href="#coffee" class="btn btn-secondary" style="border-color: rgba(250,246,240,0.4); color: var(--clr-cream);">Explore Coffee</a>
+        <a href="#visit" class="btn btn-primary">Visit Viva</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- HERO SECTION                                                             -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="hero" id="hero">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1920" alt="Specialty Coffee Barista Preparation" class="hero-bg">
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <span class="eyebrow" style="color: var(--clr-gold);">Artisan Roastery & Specialty Cafe</span>
+      <h1 class="hero-headline editorial-headline">Crafted with Passion. Rooted in Origin.</h1>
+      <p class="hero-sub">Single-origin specialty coffees, precision roasting, and authentic Latin American coffee heritage in downtown Winston-Salem.</p>
+      
+      <div class="hero-actions">
+        <a href="#coffee" class="btn btn-primary">
+          Explore Our Coffee <span class="btn-arrow">→</span>
+        </a>
+        <a href="#visit" class="btn btn-dark">Visit the Cafe</a>
+      </div>
+
+      <div>
+        <span class="hero-location-badge">📍 229 W 5th St · Winston-Salem, NC</span>
+      </div>
+    </div>
+
+    <div class="hero-footer">
+      <a href="#about" class="scroll-indicator">
+        <span></span>
+        Scroll
+      </a>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- BRAND STATEMENT / EDITORIAL INTRO                                        -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="editorial-intro section-padding" id="about">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text-wrapper">
+          <span class="eyebrow">Our Philosophy</span>
+          <h2 class="intro-headline section-headline">A Passion for Specialty Coffee, Shared Daily</h2>
+          <p class="intro-body">At Viva Barista Cafe, coffee is more than a daily routine—it is an art form, a craft, and a bridge to origin. Inspired by rich Latin American coffee traditions and founded on rigorous professional roasting standards, we deliver exceptional clarity in every cup.</p>
+          <p class="intro-body">Located in the heart of Winston-Salem, our cafe offers a bright, welcoming environment where house-roasted beans and meticulous barista craft meet genuine hospitality.</p>
+          <a href="#story" class="btn btn-secondary" style="margin-top: 1rem;">Read Ricky's Story</a>
+        </div>
+
+        <div class="intro-image-container">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=1000" alt="Espresso extraction at Viva Barista Cafe">
+          <div class="intro-image-caption">
+            Precision Pour-Over & Espresso Extraction
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- FEATURED COFFEE SHOWCASE                                                 -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="coffee-showcase section-padding" id="coffee">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Freshly Roasted Single Origins</span>
+        <h2 class="section-headline">Featured Coffee Beans</h2>
+        <p>Sourced from dedicated farm partnerships and micro-lots, roasted in-house for optimal flavor expression.</p>
+      </div>
+
+      <div class="coffee-grid">
+        <!-- Card 1 -->
+        <div class="coffee-card">
+          <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&q=80&w=600" alt="El Salvador Bourbon Coffee Beans" class="coffee-card-img">
+          <div class="coffee-card-body">
+            <span class="coffee-origin">El Salvador</span>
+            <h3 class="coffee-title">El Salvador Bourbon</h3>
+            <p class="coffee-notes">Balanced sweetness, subtle milk chocolate, and bright red apple notes.</p>
+            <div class="coffee-process">
+              <span>Washed Process</span>
+              <span>Medium Light Roast</span>
+            </div>
+            <div class="coffee-card-footer">
+              <span class="coffee-price">See Online Store</span>
+              <a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Bag</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="coffee-card">
+          <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&q=80&w=600" alt="Honduras Washed Finca Pacavita Coffee Beans" class="coffee-card-img">
+          <div class="coffee-card-body">
+            <span class="coffee-origin">Honduras</span>
+            <h3 class="coffee-title">Finca Pacavita</h3>
+            <p class="coffee-notes">Clean cup profile with notes of brown sugar, dried fruit, and a smooth body.</p>
+            <div class="coffee-process">
+              <span>Washed Process</span>
+              <span>Medium Roast</span>
+            </div>
+            <div class="coffee-card-footer">
+              <span class="coffee-price">See Online Store</span>
+              <a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Bag</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="coffee-card">
+          <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=600" alt="Colombia Single Origin Coffee" class="coffee-card-img">
+          <div class="coffee-card-body">
+            <span class="coffee-origin">Colombia</span>
+            <h3 class="coffee-title">Colombia Yellow Bourbon</h3>
+            <p class="coffee-notes">Vibrant citrus acidity, honey sweetness, and a complex floral finish.</p>
+            <div class="coffee-process">
+              <span>Honey Process</span>
+              <span>Light Roast</span>
+            </div>
+            <div class="coffee-card-footer">
+              <span class="coffee-price">See Online Store</span>
+              <a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Bag</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener" class="btn btn-primary">
+          Explore All Coffees on Shopify <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- EXPERIENCE TIMELINE                                                     -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="experience-section section-padding" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Bean-to-Cup Journey</span>
+        <h2 class="section-headline">The Viva Experience</h2>
+        <p>Four distinct stages defining our commitment to specialty coffee craftsmanship.</p>
+      </div>
+
+      <div class="timeline-grid">
+        <div class="timeline-step">
+          <div class="timeline-number">01</div>
+          <h3>SOURCE</h3>
+          <p>Carefully selected single-origin beans sourced directly from producers in top Latin American growing regions.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-number">02</div>
+          <h3>ROAST</h3>
+          <p>Precision small-batch roasting designed to highlight unique origin profiles and natural bean sweetness.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-number">03</div>
+          <h3>BREW</h3>
+          <p>Meticulously prepared by trained baristas using calibrated espresso extraction and hand pour-overs.</p>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-number">04</div>
+          <h3>EXPERIENCE</h3>
+          <p>Served fresh in a warm, welcoming space designed for community and conversation in Winston-Salem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- MENU SECTION                                                             -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="menu-section section-padding" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Handcrafted Drinks & Food</span>
+        <h2 class="section-headline">In-Cafe Menu</h2>
+        <p>Curated offerings prepared with high-grade espresso and quality ingredients.</p>
+      </div>
+
+      <div class="menu-nav">
+        <button class="menu-tab-btn active" onclick="switchMenuTab(event, 'espresso')">Espresso & Coffee</button>
+        <button class="menu-tab-btn" onclick="switchMenuTab(event, 'specialty')">Specialty Drinks</button>
+        <button class="menu-tab-btn" onclick="switchMenuTab(event, 'cold')">Cold Drinks</button>
+        <button class="menu-tab-btn" onclick="switchMenuTab(event, 'food')">Pastries & Bites</button>
+      </div>
+
+      <!-- Espresso Category -->
+      <div class="menu-category-content active" id="espresso">
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">House Espresso Shot</div>
+            <div class="menu-item-desc">Double shot extracted from freshly roasted single-origin beans.</div>
+          </div>
+          <div class="menu-item-price">$3.25</div>
+        </div>
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Traditional Cortado</div>
+            <div class="menu-item-desc">Equal parts espresso and warm silky steamed milk.</div>
+          </div>
+          <div class="menu-item-price">$4.25</div>
+        </div>
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Cappuccino</div>
+            <div class="menu-item-desc">Espresso with rich velvet milk foam.</div>
+          </div>
+          <div class="menu-item-price">$4.75</div>
+        </div>
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Latte</div>
+            <div class="menu-item-desc">Smooth espresso poured over microfoam steamed milk.</div>
+          </div>
+          <div class="menu-item-price">$5.25</div>
+        </div>
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Pour Over / Drip Coffee</div>
+            <div class="menu-item-desc">Rotational single-origin roast prepared on demand.</div>
+          </div>
+          <div class="menu-item-price">$4.00</div>
+        </div>
+      </div>
+
+      <!-- Specialty Category -->
+      <div class="menu-category-content" id="specialty">
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Viva Signature Latte</div>
+            <div class="menu-item-desc">House-made Latin-inspired spiced syrup infused into rich espresso.</div>
+          </div>
+          <div class="menu-item-price">$5.75</div>
+        </div>
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Mocha Specia</div>
+            <div class="menu-item-desc">Artisan cocoa blended with espresso and silky microfoam.</div>
+          </div>
+          <div class="menu-item-price">$5.75</div>
+        </div>
+      </div>
+
+      <!-- Cold Category -->
+      <div class="menu-category-content" id="cold">
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Signature Cold Brew</div>
+            <div class="menu-item-desc">Steeped 18 hours for maximum smoothness and low acidity.</div>
+          </div>
+          <div class="menu-item-price">$4.75</div>
+        </div>
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Iced Latte</div>
+            <div class="menu-item-desc">Chilled milk with a double shot over ice.</div>
+          </div>
+          <div class="menu-item-price">$5.25</div>
+        </div>
+      </div>
+
+      <!-- Food Category -->
+      <div class="menu-category-content" id="food">
+        <div class="menu-item-row">
+          <div class="menu-item-info">
+            <div class="menu-item-title">Artisan Pastries</div>
+            <div class="menu-item-desc">Selection of daily baked croissants, muffins, and regional treats.</div>
+          </div>
+          <div class="menu-item-price">Seasonal Pricing</div>
+        </div>
+      </div>
+
+      <p class="menu-disclaimer">* Prices and seasonal coffee rotations are subject to change in-store. Typical price range: $1–$10.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- VIVA STORY & RICKY HIDALGO                                               -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="story-section section-padding" id="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image-wrap">
+          <img src="https://images.unsplash.com/photo-1507138086030-616c3b6db731?auto=format&fit=crop&q=80&w=900" alt="Ricky Hidalgo Coffee Roasting">
+          <div class="story-badge">
+            <p>"Coffee is passion, precision, and family."</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow">The Heart Behind Viva</span>
+          <h2 class="section-headline" style="margin-bottom: 1.5rem;">Ricky Hidalgo & The Viva Story</h2>
+          <p style="margin-bottom: 1rem;">Viva Barista Cafe grew directly out of founder Ricky Hidalgo's profound passion for coffee. What started as intensive personal study and experimentation evolved into formal barista training, specialized roasting certifications, and deep connections to coffee farms in El Salvador.</p>
+          <p style="margin-bottom: 1.5rem;">Ricky built Viva Barista Cafe to share that authentic passion with Winston-Salem—establishing a local haven where coffee is treated with technical respect, origin integrity, and open-hearted hospitality.</p>
+
+          <div class="story-timeline-mini">
+            <div class="mini-node">
+              <span class="mini-node-title">Passion</span>
+              <span class="mini-node-desc">Home brewing</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="mini-node">
+              <span class="mini-node-title">Training</span>
+              <span class="mini-node-desc">Barista & Roasting</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="mini-node">
+              <span class="mini-node-title">Roastery</span>
+              <span class="mini-node-desc">El Salvador origins</span>
+            </div>
+            <span class="mini-arrow">→</span>
+            <div class="mini-node">
+              <span class="mini-node-title">Viva Cafe</span>
+              <span class="mini-node-desc">Winston-Salem</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- ROASTERY SECTION                                                         -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="roastery-section section-padding">
+    <div class="container">
+      <div class="roastery-grid">
+        <div>
+          <span class="eyebrow">In-House Small Batch Roasting</span>
+          <h2 class="section-headline" style="margin-bottom: 1.25rem;">Roasted with Purpose & Precision</h2>
+          <p style="margin-bottom: 1.5rem;">We roast our single-origin coffees right here to bring out the distinct flavor notes inherent in each harvest—from delicate floral aromatics to rich, chocolatey caramel body.</p>
+          <a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener" class="btn btn-primary">
+            Shop Fresh Coffee Beans <span class="btn-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="roastery-media">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=800" alt="Specialty Coffee Drum Roaster in Operation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- MASONRY GALLERY                                                         -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="gallery-section section-padding" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Visual Moments</span>
+        <h2 class="section-headline">Inside Viva Barista Cafe</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=1200')">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=600" alt="Latte Art Close-up">
+          <div class="gallery-overlay">View Photo</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1200')">
+          <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=600" alt="Cafe Interior Workspace">
+          <div class="gallery-overlay">View Photo</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=1200')">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Fresh Coffee Pour-Over">
+          <div class="gallery-overlay">View Photo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img src="" alt="Enlarged View" class="lightbox-img" id="lightboxImg">
+  </div>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- INSTAGRAM / SOCIAL SECTION                                              -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="social-section section-padding">
+    <div class="container">
+      <span class="eyebrow">Connect With Us</span>
+      <h2 class="section-headline">Follow @vivabaristacafe</h2>
+      <p>Stay updated on seasonal coffee launches, roastery updates, and cafe events.</p>
+
+      <div class="insta-grid">
+        <a href="https://www.instagram.com/vivabaristacafe/" target="_blank" rel="noopener" class="insta-card">
+          <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&q=80&w=400" alt="Instagram Post 1">
+        </a>
+        <a href="https://www.instagram.com/vivabaristacafe/" target="_blank" rel="noopener" class="insta-card">
+          <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=400" alt="Instagram Post 2">
+        </a>
+        <a href="https://www.instagram.com/vivabaristacafe/" target="_blank" rel="noopener" class="insta-card">
+          <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&q=80&w=400" alt="Instagram Post 3">
+        </a>
+        <a href="https://www.instagram.com/vivabaristacafe/" target="_blank" rel="noopener" class="insta-card">
+          <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=400" alt="Instagram Post 4">
+        </a>
+      </div>
+
+      <a href="https://www.instagram.com/vivabaristacafe/" target="_blank" rel="noopener" class="btn btn-secondary">
+        Follow Us On Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- REVIEWS / TESTIMONIALS                                                   -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="reviews-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Guest Experiences</span>
+        <h2 class="section-headline">Community Reviews</h2>
+      </div>
+
+      <div class="reviews-slider">
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Hands down the best specialty coffee in Winston-Salem. The house-roasted El Salvador coffee is phenomenal, and the space is so bright and welcoming."</p>
+          </div>
+          <div class="review-author">— Local Google Reviewer</div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Ricky and his team care deeply about coffee and hospitality. Every pour-over is meticulously prepared. Highly recommended!"</p>
+          </div>
+          <div class="review-author">— Verified Cafe Guest</div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"A true gem in downtown Winston-Salem. Fantastic atmosphere, superb espresso, and wonderful family-owned warmth."</p>
+          </div>
+          <div class="review-author">— Downtown Resident</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- VISIT US & MAP                                                           -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="visit-section section-padding" id="visit">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="visit-info">
+          <span class="eyebrow">Visit Us Downtown</span>
+          <h2 class="section-headline" style="margin-bottom: 1.5rem;">Join Us for Coffee</h2>
+
+          <div class="info-group">
+            <h4>Location</h4>
+            <p style="color: var(--clr-espresso); font-weight: 600;">Viva Barista Cafe</p>
+            <p>229 W 5th St, Winston-Salem, NC 27101, United States</p>
+          </div>
+
+          <div class="info-group">
+            <h4>Phone & Contact</h4>
+            <p><a href="tel:3366555908" style="color: var(--clr-espresso); font-weight: 600;">336-655-5908</a></p>
+          </div>
+
+          <div class="info-group">
+            <h4>Price Range</h4>
+            <p>$1–10 per person</p>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <a href="https://www.google.com/maps/place/Viva+Barista+Cafe/@36.0999454,-80.2493985,17z/" target="_blank" rel="noopener" class="btn btn-primary">
+              Get Directions on Google Maps <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.288258359247!2d-80.2493985!3d36.0999454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8853ae298b0b8339%3A0x6b4431e21b069d3a!2sViva%20Barista%20Cafe!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Viva Barista Cafe Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- FINAL CTA                                                                -->
+  <!-- ------------------------------------------------------------------------ -->
+  <section class="final-cta section-padding">
+    <div class="container final-cta-content">
+      <span class="eyebrow" style="color: var(--clr-gold);">Experience Viva</span>
+      <h2 class="section-headline" style="margin-bottom: 1rem;">Taste the Specialty Difference</h2>
+      <p style="margin-bottom: 2rem;">Visit our downtown Winston-Salem cafe or order freshly roasted single-origin coffee directly to your doorstep.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#visit" class="btn btn-primary">Visit Viva Cafe</a>
+        <a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener" class="btn btn-dark">Order Coffee Online</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- FOOTER                                                                   -->
+  <!-- ------------------------------------------------------------------------ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Viva Barista Cafe</h3>
+          <p style="font-size: 0.85rem; max-width: 300px;">Specialty coffee shop and artisan roastery celebrating origin heritage and exceptional coffee craft in Winston-Salem, NC.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#coffee">Roastery</a></li>
+            <li><a href="#menu">In-Store Menu</a></li>
+            <li><a href="https://vivabaristacafe.myshopify.com/" target="_blank" rel="noopener">Shopify Store</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Visit</h4>
+          <p style="margin-bottom: 0.5rem; font-size: 0.85rem;">229 W 5th St<br>Winston-Salem, NC 27101</p>
+          <p style="font-size: 0.85rem;"><a href="tel:3366555908">336-655-5908</a></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/vivabaristacafe/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.google.com/maps/place/Viva+Barista+Cafe/@36.0999454,-80.2493985,17z/" target="_blank" rel="noopener">Google Maps</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; Viva Barista Cafe. All rights reserved.</div>
+        <div>Specialty Coffee & Roastery · Winston-Salem, NC</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ------------------------------------------------------------------------ -->
+  <!-- JAVASCRIPT LOGIC                                                         -->
+  <!-- ------------------------------------------------------------------------ -->
+  <script>
+    // 1. Sticky Navigation Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 2. Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // 3. Menu Category Tab Switching
+    function switchMenuTab(event, categoryId) {
+      // Remove active state from all buttons
+      document.querySelectorAll('.menu-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Add active state to clicked button
+      event.currentTarget.classList.add('active');
+
+      // Hide all category content
+      document.querySelectorAll('.menu-category-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      // Show selected category
+      document.getElementById(categoryId).classList.add('active');
+    }
+
+    // 4. Lightbox Functionality
+    function openLightbox(imgSrc) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      lightboxImg.src = imgSrc;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
